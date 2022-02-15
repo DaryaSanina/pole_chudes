@@ -1,13 +1,23 @@
+import pymorphy2
 import random
+
+morph = pymorphy2.MorphAnalyzer()
 
 
 def generate_word() -> str:
     """
     :return: a random word (str) from file "russian.txt"
     """
-    with open("russian.txt", encoding='utf-8') as russian_words:
-        russian_words = [word.strip().lower() for word in russian_words if word.strip().isalpha()]
-        return random.choice(russian_words)
+    with open("russian.txt", encoding='utf-8') as russian_txt:
+        russian_txt = random.choices([word.strip() for word in russian_txt], k=1000)
+        russian_words = set()
+        for word in russian_txt:
+            if word.isalpha():
+                # Check if thew word is a noun and add it's normal form to the list
+                word_parse = morph.parse(word)[0]
+                if 'NOUN' in word_parse.tag:
+                    russian_words.add(word_parse.normal_form)
+        return russian_words.pop()
 
 
 def check_input(input_word_or_letter: str) -> str:
@@ -92,7 +102,8 @@ def recognize_command(input_command: str) -> str:
 def help_command() -> str:
     commands_to_print = '\n'.join('\t' + key + ' - ' + value for key, value in COMMANDS.items())
     return f"""Загадано слово. Нужно его угадать, назвав само слово или все его буквы.
-У Вас есть {max_moves} попыток (количество различных букв в слове * 3).
+У Вас есть {max_moves} {morph.parse('попытка')[0]
+        .make_agree_with_number(max_moves).word} (количество различных букв в слове * 3).
 
 Список доступных команд:
 {commands_to_print}
