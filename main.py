@@ -103,7 +103,7 @@ def help_command() -> str:
     commands_to_print = '\n'.join('\t' + key + ' - ' + value for key, value in COMMANDS.items())
     return f"""Загадано слово. Нужно его угадать, назвав само слово или все его буквы.
 У Вас есть {max_moves} {morph.parse('попытка')[0]
-        .make_agree_with_number(max_moves).word} (количество различных букв в слове * 3).
+        .make_agree_with_number(max_moves).word} (количество букв в слове * 3).
 
 Список доступных команд:
 {commands_to_print}
@@ -146,7 +146,7 @@ used_words = set()
 
 correct_word = generate_word()
 current_word = ['*'] * len(correct_word)
-max_moves = len(list(set(correct_word))) * 3
+max_moves = len(correct_word) * 3
 
 print(help_command())
 
