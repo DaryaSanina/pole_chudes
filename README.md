@@ -1,15 +1,24 @@
 # pole_chudes
-Это консольная игра "Поле чудес"
+This is a console game "Field of Dreams"
 
-## Правила игры
-Загадано слово. Нужно его угадать, назвав само слово или все его буквы.
-У Вас есть некоторое количество ходов (количество различных букв в слове * 3).
+## Rules
+There is a word that you need to guess. You can guess the word itself or all of it's letters.
+You have several moves (number of letters in the word * 3).
 
-Список доступных команд:
-- **!moves** - показать количество ходов
-- **!left** - показать оставшиеся в алфавите буквы
-- **!used** - показать использованные буквы и слова
-- **!used_letters** - показать использованные буквы
-- **!used_words** - показать использованные слова
-- **!give_up** - сдаться и показать загаданное слово
-- **!help** - показать доступные команды
+In the beginning of the game and after each move, the word that you need to guess is printed to the console (with "\*" instead of unguessed letters).
+In each move, the user inputs a letter or a word with the same number of letters as in the word that they need to guess.
+The register of the input doesn't matter. If the user has inputed something else, they see a message about it in the console. This action is also a move.
+If the user hasn't guessed the letter or the word, they also see a message about it in the console.
+
+If the user has guessed a letter, all that letters in the word open. If the user has guessed the word, they see a win message in the console.
+
+Also the user can input commands. A command is not a move.
+
+A list of possible commands:
+- **!moves** - show the number of moves
+- **!left** - show letters that are left in the alphabet
+- **!used** - show used letters and words
+- **!used_letters** - show used letters
+- **!used_words** - show used words
+- **!give_up** - give up and show the word
+- **!help** - show possible commands
