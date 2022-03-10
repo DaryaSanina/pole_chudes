@@ -14,7 +14,7 @@ If the user hasn't guessed the letter or the word, they also see a message about
 If the user has guessed a letter, all the guessed letters in the word open. If the user has guessed the word, they see a win message in the console.
 
 ## Commands
-Also the user can input commands. A command is not a move.
+The user can also input commands. A command is not a move.
 
 A list of possible commands:
 - **!moves** - show the number of moves
